@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LedIndicator } from './common/LedIndicator';
 import { VentSlots } from './common/VentSlots';
-import { Flame, ArrowUp, Phone, Mail } from 'lucide-react';
+import { ArrowUp, Phone, Mail } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
@@ -46,8 +46,12 @@ export const Footer: React.FC<FooterProps> = () => {
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#1a1f26] border border-white/10 shadow-[inset_1px_1px_2px_black] flex items-center justify-center">
-                <Flame className="w-5 h-5 text-[#ff4757]" />
+              <div className="h-12 px-2 rounded-xl bg-white border border-white/20 shadow-[2px_2px_6px_black] flex items-center justify-center">
+                <img
+                  src="./hitzemeister-logo.jpg"
+                  alt="Hitzemeister Logo"
+                  className="h-10 w-auto object-contain"
+                />
               </div>
               <div>
                 <span className="font-sans font-black text-xl tracking-tight text-white">

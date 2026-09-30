@@ -296,7 +296,7 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
                     icon={isSubmitting ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                     iconPosition="right"
                   >
-                    {isSubmitting ? 'Transmitting Inquiry...' : 'Submit Inquiry to acc.crsenterprises@gmail.com'}
+                    {isSubmitting ? 'Submitting...' : 'Submit'}
                   </TactileButton>
                 </div>
               </form>

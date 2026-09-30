@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { LedIndicator } from './common/LedIndicator';
 import { TactileButton } from './common/TactileButton';
-import { Menu, X, Flame, Mail } from 'lucide-react';
+import { Menu, X, Mail } from 'lucide-react';
 
 interface NavbarProps {
   activeSection: string;
@@ -34,11 +34,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
           onClick={() => handleNavClick('hero')}
           className="flex items-center gap-3 cursor-pointer group select-none"
         >
-          {/* Logo Hardware Emblem */}
-          <div className="w-10 h-10 rounded-xl bg-[#e0e5ec] shadow-[inset_2px_2px_4px_#ffffff,inset_-2px_-2px_4px_#babecc,4px_4px_8px_#babecc] flex items-center justify-center border border-white/60 group-hover:scale-105 transition-transform duration-200">
-            <div className="w-6 h-6 rounded-lg bg-[#2d3436] flex items-center justify-center shadow-[inset_1px_1px_2px_rgba(0,0,0,0.8)]">
-              <Flame className="w-3.5 h-3.5 text-[#ff4757] animate-pulse" />
-            </div>
+          {/* Official Hitzemeister Logo */}
+          <div className="h-11 px-1.5 rounded-xl bg-white shadow-[2px_2px_6px_#babecc,-2px_-2px_4px_#ffffff] flex items-center justify-center border border-[#babecc]/50 group-hover:scale-105 transition-transform duration-200">
+            <img
+              src="./hitzemeister-logo.jpg"
+              alt="Hitzemeister Logo"
+              className="h-9 w-auto object-contain"
+            />
           </div>
 
           <div>

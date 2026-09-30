@@ -115,13 +115,22 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             tag="CRS GROUP EXECUTIVE PROFILE"
             className="space-y-5"
           >
-            <div className="space-y-1">
-              <span className="font-mono text-xs font-bold text-[#ff4757] uppercase tracking-wider">
-                BUILT FOR INDUSTRY
-              </span>
-              <h2 className="text-2xl font-black text-[#2d3436] tracking-tight">
-                Two Specialized Divisions, One Unified Platform
-              </h2>
+            <div className="flex items-center justify-between pb-3 border-b border-[#babecc]/50">
+              <div className="space-y-1">
+                <span className="font-mono text-xs font-bold text-[#ff4757] uppercase tracking-wider">
+                  BUILT FOR INDUSTRY
+                </span>
+                <h2 className="text-2xl font-black text-[#2d3436] tracking-tight">
+                  Two Specialized Divisions, One Unified Platform
+                </h2>
+              </div>
+              <div className="h-14 p-1 rounded-xl bg-white shadow-[2px_2px_6px_#babecc] border border-[#babecc]/40 shrink-0">
+                <img
+                  src="./hitzemeister-logo.jpg"
+                  alt="Hitzemeister Logo"
+                  className="h-full w-auto object-contain"
+                />
+              </div>
             </div>
 
             {/* Division 1: Hitzemeister */}

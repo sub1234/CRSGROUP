@@ -4,13 +4,13 @@ import { MATERIALS_DATA } from '../data/materials';
 import { BoltedCard } from './common/BoltedCard';
 import { LedIndicator } from './common/LedIndicator';
 import { TactileButton } from './common/TactileButton';
-import { Download, PlusCircle, CheckCircle, Factory, Building } from 'lucide-react';
+import { Download, Factory, Building } from 'lucide-react';
 
 interface ProductsSectionProps {
-  onSelectForRfq: (material: MaterialSpec) => void;
+  onSelectForRfq?: (material: MaterialSpec) => void;
 }
 
-export const ProductsSection: React.FC<ProductsSectionProps> = ({ onSelectForRfq }) => {
+export const ProductsSection: React.FC<ProductsSectionProps> = () => {
   const [selectedDivision, setSelectedDivision] = useState<'all' | 'hitzemeister' | 'crs-enterprises'>('all');
   const [selectedSpecModal, setSelectedSpecModal] = useState<MaterialSpec | null>(null);
 
@@ -177,29 +177,20 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ onSelectForRfq
               </div>
             </div>
 
-            {/* Bottom Actions */}
+            {/* Bottom Actions: Only Datasheet view */}
             <div className="mt-6 pt-4 border-t border-[#babecc]/60 flex flex-wrap items-center justify-between gap-3">
               <span className="font-mono text-xs text-[#4a5568]">
                 MIN LOT: <strong className="text-[#2d3436]">{mat.minOrderQuantity}</strong>
               </span>
 
-              <div className="flex items-center gap-2">
+              <div>
                 <TactileButton
                   variant="secondary"
                   size="sm"
                   icon={<Download className="w-3.5 h-3.5 text-[#ff4757]" />}
                   onClick={() => setSelectedSpecModal(mat)}
                 >
-                  Datasheet
-                </TactileButton>
-
-                <TactileButton
-                  variant="primary"
-                  size="sm"
-                  icon={<PlusCircle className="w-3.5 h-3.5" />}
-                  onClick={() => onSelectForRfq(mat)}
-                >
-                  Order / Inquire
+                  View Datasheet
                 </TactileButton>
               </div>
             </div>
@@ -241,25 +232,13 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ onSelectForRfq
                   </div>
                 </div>
 
-                <div className="pt-2 flex items-center justify-end gap-3">
+                <div className="pt-2 flex items-center justify-end">
                   <TactileButton
-                    variant="ghost"
+                    variant="primary"
                     size="sm"
                     onClick={() => setSelectedSpecModal(null)}
                   >
                     Close Window
-                  </TactileButton>
-
-                  <TactileButton
-                    variant="primary"
-                    size="sm"
-                    icon={<CheckCircle className="w-3.5 h-3.5" />}
-                    onClick={() => {
-                      onSelectForRfq(selectedSpecModal);
-                      setSelectedSpecModal(null);
-                    }}
-                  >
-                    Submit Quotation Inquiry
                   </TactileButton>
                 </div>
               </div>
