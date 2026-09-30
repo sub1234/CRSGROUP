@@ -175,13 +175,13 @@ export const ProductsSection: React.FC<ProductsSectionProps> = () => {
               </div>
             </div>
 
-            {/* Bottom Info Bar: Clean, informative, no buttons */}
+            {/* Bottom Info Bar */}
             <div className="mt-6 pt-4 border-t border-[#babecc]/60 flex items-center justify-between text-xs font-mono text-[#4a5568]">
-              <span>
-                MIN LOT: <strong className="text-[#2d3436]">{mat.minOrderQuantity}</strong>
+              <span className="text-[11px] text-[#2d3436] font-semibold">
+                STANDARD & CUSTOM PLANT SPECIFICATIONS
               </span>
               <span className="text-[10px] font-bold text-[#ff4757] uppercase tracking-wider">
-                CERTIFIED INDUSTRIAL SPECIFICATION
+                CERTIFIED INDUSTRIAL GRADE
               </span>
             </div>
           </BoltedCard>
