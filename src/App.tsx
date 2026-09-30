@@ -8,11 +8,9 @@ import { ClientsSection } from './components/ClientsSection';
 import { ProcessPipeline } from './components/ProcessPipeline';
 import { ContactRFQSection } from './components/ContactRFQSection';
 import { Footer } from './components/Footer';
-import type { MaterialSpec } from './data/materials';
 
 export function App() {
   const [activeSection, setActiveSection] = useState('hero');
-  const [selectedMaterial, setSelectedMaterial] = useState<MaterialSpec | null>(null);
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -20,11 +18,6 @@ export function App() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-  };
-
-  const handleSelectForRfq = (material: MaterialSpec) => {
-    setSelectedMaterial(material);
-    scrollToSection('rfq');
   };
 
   return (
@@ -37,10 +30,10 @@ export function App() {
         <Hero onNavigate={scrollToSection} />
         <GroupCompaniesSection onNavigateProducts={() => scrollToSection('products')} />
         <AboutSection />
-        <ProductsSection onSelectForRfq={handleSelectForRfq} />
+        <ProductsSection />
         <ClientsSection />
         <ProcessPipeline />
-        <ContactRFQSection selectedMaterial={selectedMaterial} />
+        <ContactRFQSection selectedMaterial={null} />
       </main>
 
       {/* Industrial Footer */}

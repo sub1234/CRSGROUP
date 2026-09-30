@@ -3,8 +3,7 @@ import type { MaterialSpec } from '../data/materials';
 import { MATERIALS_DATA } from '../data/materials';
 import { BoltedCard } from './common/BoltedCard';
 import { LedIndicator } from './common/LedIndicator';
-import { TactileButton } from './common/TactileButton';
-import { Download, Factory, Building } from 'lucide-react';
+import { Factory, Building } from 'lucide-react';
 
 interface ProductsSectionProps {
   onSelectForRfq?: (material: MaterialSpec) => void;
@@ -12,7 +11,6 @@ interface ProductsSectionProps {
 
 export const ProductsSection: React.FC<ProductsSectionProps> = () => {
   const [selectedDivision, setSelectedDivision] = useState<'all' | 'hitzemeister' | 'crs-enterprises'>('all');
-  const [selectedSpecModal, setSelectedSpecModal] = useState<MaterialSpec | null>(null);
 
   const filteredMaterials = selectedDivision === 'all'
     ? MATERIALS_DATA
@@ -177,75 +175,18 @@ export const ProductsSection: React.FC<ProductsSectionProps> = () => {
               </div>
             </div>
 
-            {/* Bottom Actions: Only Datasheet view */}
-            <div className="mt-6 pt-4 border-t border-[#babecc]/60 flex flex-wrap items-center justify-between gap-3">
-              <span className="font-mono text-xs text-[#4a5568]">
+            {/* Bottom Info Bar: Clean, informative, no buttons */}
+            <div className="mt-6 pt-4 border-t border-[#babecc]/60 flex items-center justify-between text-xs font-mono text-[#4a5568]">
+              <span>
                 MIN LOT: <strong className="text-[#2d3436]">{mat.minOrderQuantity}</strong>
               </span>
-
-              <div>
-                <TactileButton
-                  variant="secondary"
-                  size="sm"
-                  icon={<Download className="w-3.5 h-3.5 text-[#ff4757]" />}
-                  onClick={() => setSelectedSpecModal(mat)}
-                >
-                  View Datasheet
-                </TactileButton>
-              </div>
+              <span className="text-[10px] font-bold text-[#ff4757] uppercase tracking-wider">
+                CERTIFIED INDUSTRIAL SPECIFICATION
+              </span>
             </div>
           </BoltedCard>
         ))}
       </div>
-
-      {/* Datasheet Preview Modal */}
-      {selectedSpecModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="max-w-xl w-full">
-            <BoltedCard elevated={true} withScrews={true} withVents={true} tag={selectedSpecModal.divisionName.toUpperCase()}>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-[#babecc]">
-                  <div>
-                    <span className="font-mono text-xs font-bold text-[#ff4757]">{selectedSpecModal.code}</span>
-                    <h3 className="font-sans font-black text-xl text-[#2d3436]">{selectedSpecModal.name}</h3>
-                  </div>
-                  <LedIndicator color="green" size="md" label="CRS VERIFIED" />
-                </div>
-
-                <p className="text-xs text-[#4a5568] leading-relaxed">
-                  {selectedSpecModal.description}
-                </p>
-
-                <div className="p-4 rounded-xl bg-[#d1d9e6]/50 shadow-[inset_2px_2px_5px_#babecc] font-mono text-xs space-y-2">
-                  <div className="font-bold text-[#2d3436] border-b border-[#babecc]/50 pb-1">
-                    TECHNICAL PARAMETERS & QUALITY GATES
-                  </div>
-                  {selectedSpecModal.primaryChemistry.map((c, i) => (
-                    <div key={i} className="flex justify-between">
-                      <span className="text-[#4a5568]">{c.element}</span>
-                      <span className="font-bold text-[#2d3436]">{c.value}</span>
-                    </div>
-                  ))}
-                  <div className="flex justify-between pt-1 border-t border-[#babecc]/40">
-                    <span className="text-[#4a5568]">Standard Supply Fraction</span>
-                    <span className="font-bold text-[#2d3436]">{selectedSpecModal.sizing}</span>
-                  </div>
-                </div>
-
-                <div className="pt-2 flex items-center justify-end">
-                  <TactileButton
-                    variant="primary"
-                    size="sm"
-                    onClick={() => setSelectedSpecModal(null)}
-                  >
-                    Close Window
-                  </TactileButton>
-                </div>
-              </div>
-            </BoltedCard>
-          </div>
-        </div>
-      )}
     </section>
   );
 };
