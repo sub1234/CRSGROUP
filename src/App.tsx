@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { StatsStrip } from './components/StatsStrip';
 import { GroupCompaniesSection } from './components/GroupCompaniesSection';
 import { AboutSection } from './components/AboutSection';
 import { ProductsSection } from './components/ProductsSection';
@@ -36,7 +35,6 @@ export function App() {
       {/* Main Chassis Layout */}
       <main className="flex-1 space-y-4 md:space-y-8">
         <Hero onNavigate={scrollToSection} />
-        <StatsStrip />
         <GroupCompaniesSection onNavigateProducts={() => scrollToSection('products')} />
         <AboutSection />
         <ProductsSection onSelectForRfq={handleSelectForRfq} />

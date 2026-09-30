@@ -1,8 +1,8 @@
 import React from 'react';
 import { TactileButton } from './common/TactileButton';
 import { LedIndicator } from './common/LedIndicator';
-import { FurnaceTelemetryDevice } from './FurnaceTelemetryDevice';
-import { ArrowRight, DownloadCloud, Anchor, Flame, Cpu, Building2, Factory } from 'lucide-react';
+import { BoltedCard } from './common/BoltedCard';
+import { ArrowRight, DownloadCloud, Anchor, Flame, Cpu, Building2, Factory, CheckCircle2, ShieldCheck, MapPin } from 'lucide-react';
 
 interface HeroProps {
   onNavigate: (sectionId: string) => void;
@@ -28,7 +28,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </h1>
 
           <p className="text-base sm:text-lg text-[#4a5568] leading-relaxed max-w-2xl font-normal drop-shadow-[0_1px_0_#ffffff]">
-            <strong>CRS Group</strong> brings together the trusted trading power of <strong>CRS Enterprises</strong> (Quartzite, Scrap, Pig Iron & Billet Trading) and the specialized manufacturing excellence of <strong>Hitzemeister Private Limited</strong> (Tundish Boards, Ramming Mass & Customized Refractories).
+            <strong>CRS Group</strong> brings together the commercial and supply-chain capabilities of <strong>CRS Enterprises Private Limited</strong> with the specialised manufacturing capabilities of <strong>Hitzemeister Private Limited</strong>.
           </p>
 
           <div className="p-4 rounded-2xl bg-[#d1d9e6]/50 shadow-[inset_2px_2px_4px_#babecc] grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
@@ -106,9 +106,100 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Right Column: 40% interactive 3D Device Visualization */}
+        {/* Right Column: 40% Executive Corporate Panel */}
         <div className="lg:col-span-5">
-          <FurnaceTelemetryDevice />
+          <BoltedCard
+            elevated={true}
+            withScrews={true}
+            withVents={true}
+            tag="CRS GROUP EXECUTIVE PROFILE"
+            className="space-y-5"
+          >
+            <div className="space-y-1">
+              <span className="font-mono text-xs font-bold text-[#ff4757] uppercase tracking-wider">
+                BUILT FOR INDUSTRY
+              </span>
+              <h2 className="text-2xl font-black text-[#2d3436] tracking-tight">
+                Two Specialized Divisions, One Unified Platform
+              </h2>
+            </div>
+
+            {/* Division 1: Hitzemeister */}
+            <div className="p-4 rounded-xl bg-[#d1d9e6]/50 shadow-[inset_2px_2px_4px_#babecc] space-y-2">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Factory className="w-4 h-4 text-[#ff4757]" />
+                  <span className="font-mono text-xs font-bold text-[#2d3436] uppercase">
+                    Hitzemeister Private Limited
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#e0e5ec] text-[#ff4757]">
+                  MANUFACTURING
+                </span>
+              </div>
+              <p className="text-xs text-[#4a5568] leading-relaxed">
+                Specialized in the production of high-temperature <strong>Tundish Boards</strong> for continuous casting, Ramming Mass, Ball Mill Powder, and customized refractory products.
+              </p>
+              <div className="grid grid-cols-2 gap-1 text-[11px] font-mono text-[#4a5568] pt-1">
+                <span className="flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3 text-[#ff4757]" /> Tundish Boards
+                </span>
+                <span className="flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3 text-[#ff4757]" /> Ramming Mass
+                </span>
+                <span className="flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3 text-[#ff4757]" /> Ball Mill Powder
+                </span>
+                <span className="flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3 text-[#ff4757]" /> Custom Refractories
+                </span>
+              </div>
+            </div>
+
+            {/* Division 2: CRS Enterprises */}
+            <div className="p-4 rounded-xl bg-[#d1d9e6]/50 shadow-[inset_2px_2px_4px_#babecc] space-y-2">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Building2 className="w-4 h-4 text-[#ff4757]" />
+                  <span className="font-mono text-xs font-bold text-[#2d3436] uppercase">
+                    CRS Enterprises Private Limited
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#e0e5ec] text-[#2d3436]">
+                  TRADING & MINING
+                </span>
+              </div>
+              <p className="text-xs text-[#4a5568] leading-relaxed">
+                Operating across the mining, mineral and industrial material supply chain, providing steady deliveries of minerals, scrap, and raw materials.
+              </p>
+              <div className="grid grid-cols-2 gap-1 text-[11px] font-mono text-[#4a5568] pt-1">
+                <span className="flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3 text-[#ff4757]" /> Quartzite Supply
+                </span>
+                <span className="flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3 text-[#ff4757]" /> Ferro & MS Scrap
+                </span>
+                <span className="flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3 text-[#ff4757]" /> Pig Iron & Billets
+                </span>
+                <span className="flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3 text-[#ff4757]" /> Mineral Sourcing
+                </span>
+              </div>
+            </div>
+
+            {/* Location strip */}
+            <div className="pt-2 border-t border-[#babecc]/50 flex items-center justify-between text-xs font-mono text-[#4a5568]">
+              <div className="flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-[#ff4757]" />
+                <span>Purulia (Works) & London (UK)</span>
+              </div>
+              <div className="flex items-center gap-1 text-emerald-600 font-bold">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Verified Supplier</span>
+              </div>
+            </div>
+          </BoltedCard>
         </div>
       </div>
     </section>
