@@ -5,7 +5,7 @@ import { BoltedCard } from './common/BoltedCard';
 import { LedIndicator } from './common/LedIndicator';
 import { TactileButton } from './common/TactileButton';
 import { RecessedInput, RecessedSelect } from './common/RecessedInput';
-import { Send, CheckCircle2, Building, Mail, Phone, MapPin, RefreshCw, AlertCircle, ShieldCheck } from 'lucide-react';
+import { Send, CheckCircle2, Building, Mail, Phone, MapPin, RefreshCw, AlertCircle } from 'lucide-react';
 
 interface ContactRFQSectionProps {
   selectedMaterial: MaterialSpec | null;
@@ -17,11 +17,10 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [materialId, setMaterialId] = useState(MATERIALS_DATA[0].id);
-  const [tonnage, setTonnage] = useState(5000);
-  const [deliveryLocation, setDeliveryLocation] = useState('Purulia / Eastern India Steel Belt');
+  const [deliveryLocation, setDeliveryLocation] = useState('');
   const [customSpecs, setCustomSpecs] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submittedRfqCode, setSubmittedRfqCode] = useState<string | null>(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Web3Forms access key (user can set in localStorage or environment, with public fallback)
@@ -51,7 +50,32 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
       return;
     }
 
-    // Validation 3: Notes / Specific Requirements is mandatory
+    // Validation 3: Validate email format if provided
+    if (email.trim()) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.trim())) {
+        setErrorMessage('Please enter a valid email address (e.g. name@company.com).');
+        return;
+      }
+    }
+
+    // Validation 4: Validate phone number if provided (numbers only, max 11 digits, min 10 digits)
+    if (phone.trim()) {
+      if (!/^\d+$/.test(phone.trim())) {
+        setErrorMessage('Phone number must contain numbers only.');
+        return;
+      }
+      if (phone.trim().length > 11) {
+        setErrorMessage('Phone number cannot exceed 11 digits.');
+        return;
+      }
+      if (phone.trim().length < 10) {
+        setErrorMessage('Please enter a valid phone number (10 to 11 digits).');
+        return;
+      }
+    }
+
+    // Validation 5: Notes / Specific Requirements is mandatory
     if (!customSpecs.trim()) {
       setErrorMessage('Please enter your requirements / notes before submitting.');
       return;
@@ -59,20 +83,19 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
 
     setIsSubmitting(true);
 
-    const generatedCode = `CRS-HM-${Math.floor(100000 + Math.random() * 900000)}`;
+    const generatedRef = `CRS-HM-${Math.floor(100000 + Math.random() * 900000)}`;
 
     const formData = {
       access_key: WEB3FORMS_ACCESS_KEY || 'test-mode-key',
-      subject: `New Steel Plant Inquiry [${generatedCode}] - ${personName} (${plantName || 'Direct Client'})`,
+      subject: `New Steel Plant Inquiry [${generatedRef}] - ${personName} (${plantName || 'Direct Client'})`,
       from_name: personName,
       email: email || 'Not provided (phone provided)',
       phone: phone || 'Not provided (email provided)',
       company: plantName || 'Not specified',
       product: `${currentMat.name} (${currentMat.code}) - ${currentMat.divisionName}`,
-      quantity_tonnage: `${tonnage.toLocaleString()} MT`,
-      delivery_location: deliveryLocation,
+      delivery_location: deliveryLocation || 'Not specified',
       custom_specifications: customSpecs,
-      docket_number: generatedCode,
+      inquiry_reference: generatedRef,
       recipient_email: 'acc.crsenterprises@gmail.com',
     };
 
@@ -89,30 +112,31 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
 
         const result = await response.json();
         if (result.success) {
-          setSubmittedRfqCode(generatedCode);
+          setIsSubmitted(true);
         } else {
           console.warn('Web3Forms response:', result);
-          setSubmittedRfqCode(generatedCode);
+          setIsSubmitted(true);
         }
       } else {
         await new Promise((resolve) => setTimeout(resolve, 800));
-        setSubmittedRfqCode(generatedCode);
+        setIsSubmitted(true);
       }
     } catch (err) {
       console.error('Submission error:', err);
-      setSubmittedRfqCode(generatedCode);
+      setIsSubmitted(true);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleReset = () => {
-    setSubmittedRfqCode(null);
+    setIsSubmitted(false);
     setPlantName('');
     setPersonName('');
     setEmail('');
     setPhone('');
     setCustomSpecs('');
+    setDeliveryLocation('');
     setErrorMessage(null);
   };
 
@@ -138,56 +162,57 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
         {/* Left Column: Form (7 Cols) */}
         <div className="lg:col-span-7">
           <BoltedCard elevated={true} withScrews={true} withVents={true} tag="CENTRAL INQUIRY STATION">
-            {submittedRfqCode ? (
-              <div className="p-6 text-center space-y-5 animate-in fade-in zoom-in-95 duration-200">
-                <div className="w-16 h-16 rounded-full bg-emerald-100 border border-emerald-400 text-emerald-600 flex items-center justify-center mx-auto shadow-[0_0_15px_rgba(16,185,129,0.4)]">
+            {isSubmitted ? (
+              <div className="p-6 md:p-8 text-center space-y-6 animate-in fade-in zoom-in-95 duration-200">
+                <div className="w-16 h-16 rounded-full bg-emerald-100 border border-emerald-400 text-emerald-600 flex items-center justify-center mx-auto shadow-[0_0_15px_rgba(16,185,129,0.35)]">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
 
-                <div>
-                  <span className="font-mono text-xs uppercase font-bold text-[#0ea5e9]">
-                    INQUIRY RECORDED & ROUTED TO DIRECTORS' DESK
-                  </span>
-                  <h3 className="text-2xl font-black text-[#2d3436] mt-1">
-                    TRANSMISSION SUCCESSFUL
+                <div className="space-y-2">
+                  <h3 className="text-2xl sm:text-3xl font-black text-[#2d3436] tracking-tight">
+                    Thank You for Your Enquiry!
                   </h3>
-                  <div className="mt-3 inline-block px-4 py-2 rounded-xl bg-[#d1d9e6] font-mono text-sm font-bold text-[#2d3436] shadow-[inset_2px_2px_4px_#babecc]">
-                    DOCKET NO: {submittedRfqCode}
-                  </div>
+                  <p className="text-sm sm:text-base text-[#4a5568] max-w-lg mx-auto font-medium leading-relaxed">
+                    Thank you for contacting us. We have received your inquiry and our team will reach out to you promptly.
+                  </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#e0e5ec] shadow-[inset_1px_1px_3px_#ffffff,2px_2px_5px_#babecc] text-left text-xs font-mono space-y-1.5 text-[#4a5568]">
+                <div className="p-4 rounded-xl bg-[#e0e5ec] shadow-[inset_1px_1px_3px_#ffffff,2px_2px_5px_#babecc] text-left text-xs font-mono space-y-2 text-[#4a5568] max-w-md mx-auto">
                   <div className="flex justify-between">
                     <span>Contact Name:</span>
                     <strong className="text-[#2d3436]">{personName}</strong>
                   </div>
+                  {plantName && (
+                    <div className="flex justify-between">
+                      <span>Company:</span>
+                      <strong className="text-[#2d3436]">{plantName}</strong>
+                    </div>
+                  )}
+                  {email && (
+                    <div className="flex justify-between">
+                      <span>Email:</span>
+                      <strong className="text-[#2d3436]">{email}</strong>
+                    </div>
+                  )}
+                  {phone && (
+                    <div className="flex justify-between">
+                      <span>Phone:</span>
+                      <strong className="text-[#2d3436]">{phone}</strong>
+                    </div>
+                  )}
                   <div className="flex justify-between">
-                    <span>Company:</span>
-                    <strong className="text-[#2d3436]">{plantName || 'Not specified'}</strong>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Contact Info:</span>
-                    <strong className="text-[#2d3436]">{email || phone}</strong>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Product:</span>
+                    <span>Selected Product:</span>
                     <strong className="text-[#2d3436]">{currentMat.name}</strong>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Quantity:</span>
-                    <strong className="text-[#0284c7]">{tonnage.toLocaleString()} MT</strong>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Destination Inbox:</span>
-                    <strong className="text-[#2d3436]">acc.crsenterprises@gmail.com</strong>
-                  </div>
+                  {deliveryLocation && (
+                    <div className="flex justify-between">
+                      <span>Delivery Location:</span>
+                      <strong className="text-[#0284c7]">{deliveryLocation}</strong>
+                    </div>
+                  )}
                 </div>
 
-                <p className="text-xs text-[#4a5568] max-w-md mx-auto leading-relaxed">
-                  Thank you! Our management and procurement officers will review your technical requirements and contact you via phone or email promptly.
-                </p>
-
-                <div className="pt-2 flex items-center justify-center gap-3">
+                <div className="pt-2 flex items-center justify-center">
                   <TactileButton variant="secondary" size="md" onClick={handleReset}>
                     Submit Another Inquiry
                   </TactileButton>
@@ -225,16 +250,21 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
                     type="email"
                     placeholder="procurement@steelplant.com"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value.trim())}
                     icon={<Mail className="w-4 h-4" />}
                   />
 
                   <RecessedInput
                     label="Phone / Mobile Number (Phone or Email required)"
                     type="tel"
-                    placeholder="+91 98765 43210"
+                    inputMode="numeric"
+                    maxLength={11}
+                    placeholder="e.g. 9876543210 (numbers only, max 11 digits)"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => {
+                      const numbersOnly = e.target.value.replace(/\D/g, '').slice(0, 11);
+                      setPhone(numbersOnly);
+                    }}
                     icon={<Phone className="w-4 h-4" />}
                   />
                 </div>
@@ -250,46 +280,13 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
                     }))}
                   />
 
-                  <RecessedSelect
+                  <RecessedInput
                     label="Target Delivery Location"
+                    placeholder="e.g. Purulia, West Bengal / Rourkela / Plant Site"
                     value={deliveryLocation}
                     onChange={(e) => setDeliveryLocation(e.target.value)}
-                    options={[
-                      { value: 'Purulia / Eastern India Steel Belt', label: 'Purulia / West Bengal Hub' },
-                      { value: 'Durgapur / Asansol Steel Belt', label: 'Durgapur / Asansol' },
-                      { value: 'Rourkela / Odisha Sector', label: 'Rourkela / Odisha' },
-                      { value: 'Jamshedpur / Jharkhand Belt', label: 'Jamshedpur / Jharkhand' },
-                      { value: 'Raipur / Central India', label: 'Raipur / Central India' },
-                      { value: 'FOB / Rail Wagon Dispatch', label: 'FOB / Rake Dispatch' },
-                    ]}
+                    icon={<MapPin className="w-4 h-4" />}
                   />
-                </div>
-
-                {/* Volume Tonnage Slider */}
-                <div className="space-y-2 pt-1">
-                  <div className="flex items-center justify-between text-xs font-mono font-bold uppercase text-[#4a5568]">
-                    <span>Estimated Requirement Tonnage / Volume</span>
-                    <span className="text-[#0284c7] font-extrabold text-sm">
-                      {tonnage.toLocaleString()} MT / SETS
-                    </span>
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-[#d1d9e6]/50 shadow-[inset_2px_2px_4px_#babecc] flex items-center">
-                    <input
-                      type="range"
-                      min={100}
-                      max={50000}
-                      step={100}
-                      value={tonnage}
-                      onChange={(e) => setTonnage(Number(e.target.value))}
-                      className="w-full h-2 bg-[#babecc] rounded-lg appearance-none cursor-pointer accent-[#0ea5e9]"
-                    />
-                  </div>
-                  <div className="flex justify-between text-[10px] font-mono text-[#4a5568]">
-                    <span>Trial Lot: 100 MT</span>
-                    <span>Regular Batch: 5,000 MT</span>
-                    <span>Bulk Contract: 50,000 MT</span>
-                  </div>
                 </div>
 
                 {/* Notes / Specific Requirements - Mandatory */}
@@ -373,46 +370,31 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
 
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-[#38bdf8] shrink-0" />
-                  <a href="mailto:acc.crsenterprises@gmail.com" className="hover:text-[#38bdf8] font-bold underline">
+                  <a href="mailto:acc.crsenterprises@gmail.com" className="hover:text-[#38bdf8] font-bold">
                     acc.crsenterprises@gmail.com
                   </a>
                 </div>
-              </div>
 
-              <div className="pt-3 border-t border-neutral-800 space-y-2.5 text-xs text-neutral-300">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-[#38bdf8] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-white">Manufacturing Plant & Office (Purulia):</strong>
-                    <p className="text-[11px] text-neutral-400">
+                    <div className="font-bold text-white">Purulia Registered Works:</div>
+                    <div className="text-neutral-400 text-[11px] mt-0.5">
                       814, Narayanpur, Purulia, West Bengal - 723121, India
-                    </p>
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-[#38bdf8] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-white">UK Corporate Office (London):</strong>
-                    <p className="text-[11px] text-neutral-400">
+                    <div className="font-bold text-white">London Corporate Office:</div>
+                    <div className="text-neutral-400 text-[11px] mt-0.5">
                       128, City Road, London, United Kingdom
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Group Commitment Plaque */}
-          <div className="p-5 rounded-2xl bg-[#e0e5ec] border border-white/60 shadow-[8px_8px_18px_#babecc,-8px_-8px_18px_#ffffff] space-y-2 text-xs font-mono text-[#4a5568]">
-            <div className="flex items-center justify-between pb-2 border-b border-[#babecc]/60">
-              <span className="font-bold text-[#2d3436] uppercase">OUR PROMISE</span>
-              <ShieldCheck className="w-4 h-4 text-[#0284c7]" />
-            </div>
-            <div className="space-y-1">
-              <div className="font-bold text-[#2d3436]">● RELIABILITY IN MATERIALS</div>
-              <div className="font-bold text-[#2d3436]">● CONSISTENCY IN PRODUCTS</div>
-              <div className="font-bold text-[#2d3436]">● RESPONSIBILITY IN SERVICE</div>
             </div>
           </div>
         </div>
