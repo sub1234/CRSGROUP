@@ -24,7 +24,7 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Web3Forms access key (user can set in localStorage or environment, with public fallback)
-  const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || '';
+  const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || 'f8853efd-1a37-406c-a9ee-e864777eff95';
 
   useEffect(() => {
     if (selectedMaterial) {
@@ -86,7 +86,7 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
     const generatedRef = `CRS-HM-${Math.floor(100000 + Math.random() * 900000)}`;
 
     const formData = {
-      access_key: WEB3FORMS_ACCESS_KEY || 'test-mode-key',
+      access_key: WEB3FORMS_ACCESS_KEY || 'f8853efd-1a37-406c-a9ee-e864777eff95',
       subject: `New Steel Plant Inquiry [${generatedRef}] - ${personName} (${plantName || 'Direct Client'})`,
       from_name: personName,
       email: email || 'Not provided (phone provided)',
@@ -96,7 +96,7 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
       delivery_location: deliveryLocation || 'Not specified',
       custom_specifications: customSpecs,
       inquiry_reference: generatedRef,
-      recipient_email: 'acc.crsenterprises@gmail.com',
+      recipient_email: 'accounts@crshmgroup.com',
     };
 
     try {
@@ -370,8 +370,8 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
 
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-[#38bdf8] shrink-0" />
-                  <a href="mailto:acc.crsenterprises@gmail.com" className="hover:text-[#38bdf8] font-bold">
-                    acc.crsenterprises@gmail.com
+                  <a href="mailto:accounts@crshmgroup.com" className="hover:text-[#38bdf8] font-bold">
+                    accounts@crshmgroup.com
                   </a>
                 </div>
 

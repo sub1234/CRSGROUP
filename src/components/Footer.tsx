@@ -48,8 +48,8 @@ export const Footer: React.FC<FooterProps> = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#38bdf8]" />
-                <a href="mailto:acc.crsenterprises@gmail.com" className="hover:text-white underline">
-                  acc.crsenterprises@gmail.com
+                <a href="mailto:accounts@crshmgroup.com" className="hover:text-white underline">
+                  accounts@crshmgroup.com
                 </a>
               </div>
             </div>
