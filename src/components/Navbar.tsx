@@ -56,8 +56,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
               <span className="text-[9px] font-mono tracking-widest text-[#4a5568] uppercase font-bold">
                 CRS Enterprises • Hitzemeister Pvt Ltd
               </span>
-              <span className="w-1 h-1 rounded-full bg-[#babecc]" />
-              <LedIndicator color="green" size="sm" pulse={true} label="PURULIA WORKS" className="hidden lg:inline-flex" />
             </div>
           </div>
         </div>
@@ -108,7 +106,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
       {mobileMenuOpen && (
         <div className="md:hidden mt-3 pt-3 border-t border-[#babecc]/60 space-y-2 pb-2 animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="flex items-center justify-between px-2 pb-2">
-            <LedIndicator color="green" size="sm" label="PURULIA & LONDON CONNECTED" />
+            <LedIndicator color="green" size="sm" label="OFFICIAL PORTAL" />
             <span className="text-[10px] font-mono text-[#4a5568]">+91-7863950905</span>
           </div>
 
