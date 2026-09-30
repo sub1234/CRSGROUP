@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface LedIndicatorProps {
-  color?: 'green' | 'orange' | 'yellow' | 'red';
+  color?: 'green' | 'blue' | 'orange' | 'yellow' | 'red';
   label?: string;
   pulse?: boolean;
   size?: 'sm' | 'md' | 'lg';
@@ -9,7 +9,7 @@ interface LedIndicatorProps {
 }
 
 export const LedIndicator: React.FC<LedIndicatorProps> = ({
-  color = 'orange',
+  color = 'blue',
   label,
   pulse = true,
   size = 'md',
@@ -27,10 +27,15 @@ export const LedIndicator: React.FC<LedIndicatorProps> = ({
       glow: 'shadow-[0_0_10px_2px_rgba(16,185,129,0.7)]',
       border: 'border-emerald-300',
     },
+    blue: {
+      bg: 'bg-[#0ea5e9]',
+      glow: 'shadow-[0_0_10px_2px_rgba(14,165,233,0.75)]',
+      border: 'border-[#7dd3fc]',
+    },
     orange: {
-      bg: 'bg-[#ff4757]',
-      glow: 'shadow-[0_0_10px_2px_rgba(255,71,87,0.75)]',
-      border: 'border-[#ff7a87]',
+      bg: 'bg-[#0ea5e9]',
+      glow: 'shadow-[0_0_10px_2px_rgba(14,165,233,0.75)]',
+      border: 'border-[#7dd3fc]',
     },
     red: {
       bg: 'bg-red-600',

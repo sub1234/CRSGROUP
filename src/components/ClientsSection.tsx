@@ -36,9 +36,9 @@ export const ClientsSection: React.FC = () => {
             <div>
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-xl bg-[#e0e5ec] shadow-[inset_2px_2px_4px_#ffffff,inset_-2px_-2px_4px_#babecc,3px_3px_6px_#babecc] flex items-center justify-center border border-white/60 group-hover:scale-105 transition-transform duration-200">
-                  <Building2 className="w-5 h-5 text-[#ff4757]" />
+                  <Building2 className="w-5 h-5 text-[#0284c7]" />
                 </div>
-                <div className="text-[10px] font-mono text-[#ff4757] font-bold">
+                <div className="text-[10px] font-mono text-[#0284c7] font-bold">
                   {customer.sector}
                 </div>
               </div>
@@ -60,7 +60,7 @@ export const ClientsSection: React.FC = () => {
         {/* Callout Card */}
         <div className="p-6 rounded-2xl bg-[#282f38] text-white border border-white/10 shadow-[8px_8px_18px_#babecc,-8px_-8px_18px_#ffffff] flex flex-col justify-between bolted-panel-dark">
           <div>
-            <div className="flex items-center gap-2 mb-2 text-[#ff4757]">
+            <div className="flex items-center gap-2 mb-2 text-[#0284c7]">
               <ShieldCheck className="w-5 h-5" />
               <span className="font-mono text-xs uppercase font-bold tracking-wider">
                 Industry Trust

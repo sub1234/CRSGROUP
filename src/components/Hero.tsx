@@ -24,7 +24,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </div>
 
           <h1 className="font-sans font-black text-4xl sm:text-5xl lg:text-6xl text-[#2d3436] tracking-tight leading-[1.08] drop-shadow-[0_1px_1px_#ffffff]">
-            FROM RAW MATERIALS TO <span className="text-[#ff4757]">REFRACTORY SOLUTIONS</span>
+            FROM RAW MATERIALS TO <span className="text-[#0284c7]">REFRACTORY SOLUTIONS</span>
           </h1>
 
           <p className="text-base sm:text-lg text-[#4a5568] leading-relaxed max-w-2xl font-normal drop-shadow-[0_1px_0_#ffffff]">
@@ -33,7 +33,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
           <div className="p-4 rounded-2xl bg-[#d1d9e6]/50 shadow-[inset_2px_2px_4px_#babecc] grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
             <div className="flex items-center gap-2.5 p-2 rounded-lg bg-[#e0e5ec] shadow-[1px_1px_3px_#babecc]">
-              <Factory className="w-4 h-4 text-[#ff4757] shrink-0" />
+              <Factory className="w-4 h-4 text-[#0284c7] shrink-0" />
               <div>
                 <strong className="text-[#2d3436] block">Hitzemeister</strong>
                 <span className="text-[#4a5568] text-[11px]">Tundish Boards & Consumables</span>
@@ -41,7 +41,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             </div>
 
             <div className="flex items-center gap-2.5 p-2 rounded-lg bg-[#e0e5ec] shadow-[1px_1px_3px_#babecc]">
-              <Building2 className="w-4 h-4 text-[#ff4757] shrink-0" />
+              <Building2 className="w-4 h-4 text-[#0284c7] shrink-0" />
               <div>
                 <strong className="text-[#2d3436] block">CRS Enterprises</strong>
                 <span className="text-[#4a5568] text-[11px]">Scrap, Quartzite & Pig Iron</span>
@@ -63,7 +63,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             <TactileButton
               variant="secondary"
               size="lg"
-              icon={<DownloadCloud className="w-4 h-4 text-[#ff4757]" />}
+              icon={<DownloadCloud className="w-4 h-4 text-[#0284c7]" />}
               onClick={() => onNavigate('products')}
             >
               Explore Products & Minerals
@@ -73,7 +73,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           <div className="pt-4 grid grid-cols-3 gap-3">
             <div className="p-3 rounded-xl bg-[#e0e5ec] shadow-[inset_2px_2px_4px_#babecc,inset_-2px_-2px_4px_#ffffff] border border-white/50">
               <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase text-[#4a5568] font-bold">
-                <Flame className="w-3 h-3 text-[#ff4757]" />
+                <Flame className="w-3 h-3 text-[#0284c7]" />
                 Tundish Boards
               </div>
               <div className="font-mono text-base sm:text-lg font-extrabold text-[#2d3436] mt-0.5">
@@ -84,7 +84,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
             <div className="p-3 rounded-xl bg-[#e0e5ec] shadow-[inset_2px_2px_4px_#babecc,inset_-2px_-2px_4px_#ffffff] border border-white/50">
               <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase text-[#4a5568] font-bold">
-                <Cpu className="w-3 h-3 text-[#ff4757]" />
+                <Cpu className="w-3 h-3 text-[#0284c7]" />
                 Quartzite & Scrap
               </div>
               <div className="font-mono text-base sm:text-lg font-extrabold text-[#2d3436] mt-0.5">
@@ -95,7 +95,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
             <div className="p-3 rounded-xl bg-[#e0e5ec] shadow-[inset_2px_2px_4px_#babecc,inset_-2px_-2px_4px_#ffffff] border border-white/50">
               <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase text-[#4a5568] font-bold">
-                <Anchor className="w-3 h-3 text-[#ff4757]" />
+                <Anchor className="w-3 h-3 text-[#0284c7]" />
                 Client Base
               </div>
               <div className="font-mono text-base sm:text-lg font-extrabold text-[#2d3436] mt-0.5">
@@ -117,7 +117,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           >
             <div className="flex items-center justify-between pb-3 border-b border-[#babecc]/50">
               <div className="space-y-1">
-                <span className="font-mono text-xs font-bold text-[#ff4757] uppercase tracking-wider">
+                <span className="font-mono text-xs font-bold text-[#0284c7] uppercase tracking-wider">
                   BUILT FOR INDUSTRY
                 </span>
                 <h2 className="text-2xl font-black text-[#2d3436] tracking-tight">
@@ -137,12 +137,12 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             <div className="p-4 rounded-xl bg-[#d1d9e6]/50 shadow-[inset_2px_2px_4px_#babecc] space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Factory className="w-4 h-4 text-[#ff4757]" />
+                  <Factory className="w-4 h-4 text-[#0284c7]" />
                   <span className="font-mono text-xs font-bold text-[#2d3436] uppercase">
                     Hitzemeister Private Limited
                   </span>
                 </div>
-                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#e0e5ec] text-[#ff4757]">
+                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#e0e5ec] text-[#0284c7]">
                   MANUFACTURING
                 </span>
               </div>
@@ -151,16 +151,16 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               </p>
               <div className="grid grid-cols-2 gap-1 text-[11px] font-mono text-[#4a5568] pt-1">
                 <span className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3 text-[#ff4757]" /> Tundish Boards
+                  <CheckCircle2 className="w-3 h-3 text-[#0284c7]" /> Tundish Boards
                 </span>
                 <span className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3 text-[#ff4757]" /> Ramming Mass
+                  <CheckCircle2 className="w-3 h-3 text-[#0284c7]" /> Ramming Mass
                 </span>
                 <span className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3 text-[#ff4757]" /> Ball Mill Powder
+                  <CheckCircle2 className="w-3 h-3 text-[#0284c7]" /> Ball Mill Powder
                 </span>
                 <span className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3 text-[#ff4757]" /> Custom Refractories
+                  <CheckCircle2 className="w-3 h-3 text-[#0284c7]" /> Custom Refractories
                 </span>
               </div>
             </div>
@@ -169,7 +169,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             <div className="p-4 rounded-xl bg-[#d1d9e6]/50 shadow-[inset_2px_2px_4px_#babecc] space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Building2 className="w-4 h-4 text-[#ff4757]" />
+                  <Building2 className="w-4 h-4 text-[#0284c7]" />
                   <span className="font-mono text-xs font-bold text-[#2d3436] uppercase">
                     CRS Enterprises Private Limited
                   </span>
@@ -183,16 +183,16 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               </p>
               <div className="grid grid-cols-2 gap-1 text-[11px] font-mono text-[#4a5568] pt-1">
                 <span className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3 text-[#ff4757]" /> Quartzite Supply
+                  <CheckCircle2 className="w-3 h-3 text-[#0284c7]" /> Quartzite Supply
                 </span>
                 <span className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3 text-[#ff4757]" /> Ferro & MS Scrap
+                  <CheckCircle2 className="w-3 h-3 text-[#0284c7]" /> Ferro & MS Scrap
                 </span>
                 <span className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3 text-[#ff4757]" /> Pig Iron & Billets
+                  <CheckCircle2 className="w-3 h-3 text-[#0284c7]" /> Pig Iron & Billets
                 </span>
                 <span className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3 text-[#ff4757]" /> Mineral Sourcing
+                  <CheckCircle2 className="w-3 h-3 text-[#0284c7]" /> Mineral Sourcing
                 </span>
               </div>
             </div>
@@ -200,7 +200,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             {/* Location strip */}
             <div className="pt-2 border-t border-[#babecc]/50 flex items-center justify-between text-xs font-mono text-[#4a5568]">
               <div className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#ff4757]" />
+                <MapPin className="w-3.5 h-3.5 text-[#0284c7]" />
                 <span>Purulia (Works) & London (UK)</span>
               </div>
               <div className="flex items-center gap-1 text-emerald-600 font-bold">

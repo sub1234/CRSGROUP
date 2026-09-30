@@ -7,7 +7,7 @@
   --color-charcoal: #2d3436;
   --color-slate-dark: #2c3e50;
   --color-ink-muted: #4a5568;
-  --color-safety-orange: #ff4757;
+  --color-accent-blue: #0ea5e9;
   --color-border-shadow: #babecc;
   --color-border-light: #ffffff;
   --color-border-dark: #a3b1c6;
@@ -21,9 +21,9 @@
   --shadow-pressed: inset 6px 6px 12px #babecc, inset -6px -6px 12px #ffffff;
   --shadow-recessed: inset 4px 4px 8px #babecc, inset -4px -4px 8px #ffffff;
   --shadow-sharp: 4px 4px 8px rgba(0, 0, 0, 0.15), -1px -1px 1px rgba(255, 255, 255, 0.8);
-  --shadow-glow-orange: 0 0 12px 2px rgba(255, 71, 87, 0.65);
+  --shadow-glow-blue: 0 0 12px 2px rgba(14, 165, 233, 0.65);
   --shadow-glow-green: 0 0 10px 2px rgba(34, 197, 94, 0.7);
-  --shadow-btn-orange: 4px 4px 8px rgba(166, 50, 60, 0.45), -4px -4px 8px rgba(255, 110, 120, 0.45);
+  --shadow-btn-blue: 4px 4px 8px rgba(2, 132, 199, 0.45), -4px -4px 8px rgba(56, 189, 248, 0.45);
   --ease-mechanical: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -59,16 +59,16 @@ body {
   box-shadow: var(--shadow-sharp);
 }
 
-.shadow-glow-orange {
-  box-shadow: var(--shadow-glow-orange);
+.shadow-glow-blue {
+  box-shadow: var(--shadow-glow-blue);
 }
 
 .shadow-glow-green {
   box-shadow: var(--shadow-glow-green);
 }
 
-.shadow-btn-orange {
-  box-shadow: var(--shadow-btn-orange);
+.shadow-btn-blue {
+  box-shadow: var(--shadow-btn-blue);
 }
 
 /* Bolted panel corner screws */

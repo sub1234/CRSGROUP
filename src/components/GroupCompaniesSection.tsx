@@ -12,13 +12,13 @@ export const GroupCompaniesSection: React.FC<GroupCompaniesSectionProps> = ({ on
   const getIcon = (id: string) => {
     switch (id) {
       case 'crs-enterprises':
-        return <Building className="w-6 h-6 text-[#ff4757]" />;
+        return <Building className="w-6 h-6 text-[#0284c7]" />;
       case 'hitzemeister':
-        return <Factory className="w-6 h-6 text-[#ff4757]" />;
+        return <Factory className="w-6 h-6 text-[#0284c7]" />;
       case 'sugarbiz':
-        return <Globe2 className="w-6 h-6 text-[#ff4757]" />;
+        return <Globe2 className="w-6 h-6 text-[#0284c7]" />;
       default:
-        return <Truck className="w-6 h-6 text-[#ff4757]" />;
+        return <Truck className="w-6 h-6 text-[#0284c7]" />;
     }
   };
 
@@ -56,7 +56,7 @@ export const GroupCompaniesSection: React.FC<GroupCompaniesSectionProps> = ({ on
                   {getIcon(company.id)}
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono text-[#ff4757] font-extrabold uppercase tracking-wider">
+                  <span className="text-[10px] font-mono text-[#0284c7] font-extrabold uppercase tracking-wider">
                     {company.location}
                   </span>
                   <h3 className="font-sans font-black text-xl text-[#2d3436] tracking-tight leading-snug">
@@ -80,7 +80,7 @@ export const GroupCompaniesSection: React.FC<GroupCompaniesSectionProps> = ({ on
                 <ul className="space-y-1.5 text-xs text-[#4a5568]">
                   {company.highlights.map((h, i) => (
                     <li key={i} className="flex items-center gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#ff4757] shrink-0" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#0284c7] shrink-0" />
                       <span>{h}</span>
                     </li>
                   ))}
@@ -94,7 +94,7 @@ export const GroupCompaniesSection: React.FC<GroupCompaniesSectionProps> = ({ on
               </span>
               <button
                 onClick={onNavigateProducts}
-                className="font-mono text-xs font-bold text-[#ff4757] hover:underline flex items-center gap-1 cursor-pointer"
+                className="font-mono text-xs font-bold text-[#0284c7] hover:underline flex items-center gap-1 cursor-pointer"
               >
                 <span>View Offerings</span>
                 <ArrowRight className="w-3.5 h-3.5" />

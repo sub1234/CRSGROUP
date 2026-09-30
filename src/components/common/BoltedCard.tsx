@@ -54,7 +54,7 @@ export const BoltedCard: React.FC<BoltedCardProps> = ({
         <div className="flex items-center justify-between mb-4 pl-2">
           {tag ? (
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-[#d1d9e6]/70 shadow-[inset_1px_1px_2px_#babecc,inset_-1px_-1px_2px_#ffffff] text-[10px] font-mono font-bold uppercase tracking-wider text-[#4a5568]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ff4757]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0ea5e9]" />
               {tag}
             </div>
           ) : (

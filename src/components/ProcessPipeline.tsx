@@ -10,7 +10,7 @@ export const ProcessPipeline: React.FC = () => {
       title: 'Geological Selection',
       techLabel: 'RESERVE AUDITING',
       desc: 'Selective mining and grading of high-iron hematite and low-ash coking coals to ensure consistent raw material feed chemistry.',
-      icon: <Pickaxe className="w-6 h-6 text-[#ff4757]" />,
+      icon: <Pickaxe className="w-6 h-6 text-[#0284c7]" />,
       status: 'VERIFIED',
     },
     {
@@ -18,7 +18,7 @@ export const ProcessPipeline: React.FC = () => {
       title: 'Thermal Beneficiation',
       techLabel: 'PELLET & COKE OVENS',
       desc: 'Disc pelletization with controlled basicity firing at 1,320°C and 48-hour slot-oven carbonization for high mechanical CSR.',
-      icon: <Flame className="w-6 h-6 text-[#ff4757]" />,
+      icon: <Flame className="w-6 h-6 text-[#0284c7]" />,
       status: 'OPTIMIZED',
     },
     {
@@ -26,7 +26,7 @@ export const ProcessPipeline: React.FC = () => {
       title: 'Spectrometry & Lab QA',
       techLabel: 'XRF & ASTM D5341',
       desc: 'Rigorous automated X-ray fluorescence analysis, cold-crushing verification, and EN 10204 3.1 inspection certificate generation.',
-      icon: <FlaskConical className="w-6 h-6 text-[#ff4757]" />,
+      icon: <FlaskConical className="w-6 h-6 text-[#0284c7]" />,
       status: 'ISO 17025',
     },
     {
@@ -34,7 +34,7 @@ export const ProcessPipeline: React.FC = () => {
       title: 'Just-in-Time Plant Dispatch',
       techLabel: 'INTERMODAL FREIGHT',
       desc: 'Panamax vessel chartering and dedicated rotary car-dumper rail wagons delivering directly to blast furnace stock houses.',
-      icon: <TrainFront className="w-6 h-6 text-[#ff4757]" />,
+      icon: <TrainFront className="w-6 h-6 text-[#0284c7]" />,
       status: 'DISPATCHED',
     },
   ];
@@ -85,7 +85,7 @@ export const ProcessPipeline: React.FC = () => {
                   </span>
                 </div>
 
-                <div className="text-[10px] font-mono font-bold tracking-widest text-[#ff4757] uppercase mb-1">
+                <div className="text-[10px] font-mono font-bold tracking-widest text-[#0284c7] uppercase mb-1">
                   {step.techLabel}
                 </div>
 

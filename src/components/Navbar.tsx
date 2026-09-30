@@ -48,7 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
               <span className="font-sans font-black text-lg md:text-xl tracking-tighter text-[#2d3436] drop-shadow-[0_1px_0_#ffffff]">
                 CRS GROUP
               </span>
-              <span className="hidden sm:inline-block text-[10px] font-mono font-bold bg-[#ff4757] text-white px-2 py-0.5 rounded shadow-[inset_1px_1px_2px_rgba(0,0,0,0.2)]">
+              <span className="hidden sm:inline-block text-[10px] font-mono font-bold bg-[#0284c7] text-white px-2 py-0.5 rounded shadow-[inset_1px_1px_2px_rgba(0,0,0,0.2)]">
                 HITZEMEISTER
               </span>
             </div>
@@ -70,7 +70,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
                 onClick={() => handleNavClick(item.id)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all duration-150 cursor-pointer ${
                   isActive
-                    ? 'bg-[#e0e5ec] text-[#ff4757] shadow-[4px_4px_8px_#babecc,-4px_-4px_8px_#ffffff]'
+                    ? 'bg-[#e0e5ec] text-[#0284c7] shadow-[4px_4px_8px_#babecc,-4px_-4px_8px_#ffffff]'
                     : 'text-[#4a5568] hover:text-[#2d3436] hover:bg-[#e0e5ec]/60'
                 }`}
               >
@@ -98,7 +98,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
           className="md:hidden w-11 h-11 rounded-xl bg-[#e0e5ec] shadow-[4px_4px_8px_#babecc,-4px_-4px_8px_#ffffff] flex items-center justify-center text-[#2d3436] active:shadow-[inset_2px_2px_4px_#babecc,inset_-2px_-2px_4px_#ffffff] transition-all cursor-pointer"
           aria-label="Toggle navigation menu"
         >
-          {mobileMenuOpen ? <X className="w-5 h-5 text-[#ff4757]" /> : <Menu className="w-5 h-5" />}
+          {mobileMenuOpen ? <X className="w-5 h-5 text-[#0284c7]" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 

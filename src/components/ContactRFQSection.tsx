@@ -37,22 +37,41 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setErrorMessage(null);
+
+    // Validation 1: Name is mandatory
+    if (!personName.trim()) {
+      setErrorMessage('Please enter your contact name.');
+      return;
+    }
+
+    // Validation 2: Either Phone or Email is mandatory
+    if (!email.trim() && !phone.trim()) {
+      setErrorMessage('Please provide either an email address or a phone number so we can reach you.');
+      return;
+    }
+
+    // Validation 3: Notes / Specific Requirements is mandatory
+    if (!customSpecs.trim()) {
+      setErrorMessage('Please enter your requirements / notes before submitting.');
+      return;
+    }
+
+    setIsSubmitting(true);
 
     const generatedCode = `CRS-HM-${Math.floor(100000 + Math.random() * 900000)}`;
 
     const formData = {
       access_key: WEB3FORMS_ACCESS_KEY || 'test-mode-key',
-      subject: `New Steel Plant Inquiry [${generatedCode}] - ${plantName || personName}`,
-      from_name: personName || 'Steel Plant Procurement',
-      email: email,
-      phone: phone,
-      company: plantName,
+      subject: `New Steel Plant Inquiry [${generatedCode}] - ${personName} (${plantName || 'Direct Client'})`,
+      from_name: personName,
+      email: email || 'Not provided (phone provided)',
+      phone: phone || 'Not provided (email provided)',
+      company: plantName || 'Not specified',
       product: `${currentMat.name} (${currentMat.code}) - ${currentMat.divisionName}`,
       quantity_tonnage: `${tonnage.toLocaleString()} MT`,
       delivery_location: deliveryLocation,
-      custom_specifications: customSpecs || 'Standard batch tolerances requested.',
+      custom_specifications: customSpecs,
       docket_number: generatedCode,
       recipient_email: 'acc.crsenterprises@gmail.com',
     };
@@ -72,18 +91,15 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
         if (result.success) {
           setSubmittedRfqCode(generatedCode);
         } else {
-          // If key is invalid or rate limited, still confirm to user and provide mailto fallback
           console.warn('Web3Forms response:', result);
           setSubmittedRfqCode(generatedCode);
         }
       } else {
-        // Simulated dispatch when API key is pending setup
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 800));
         setSubmittedRfqCode(generatedCode);
       }
     } catch (err) {
       console.error('Submission error:', err);
-      // Fallback: still show the ticket reference so the user experience is not disrupted
       setSubmittedRfqCode(generatedCode);
     } finally {
       setIsSubmitting(false);
@@ -97,6 +113,7 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
     setEmail('');
     setPhone('');
     setCustomSpecs('');
+    setErrorMessage(null);
   };
 
   return (
@@ -104,7 +121,7 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
       {/* Header */}
       <div className="mb-12">
         <div className="flex items-center gap-2 mb-2">
-          <LedIndicator color="orange" size="sm" pulse={true} />
+          <LedIndicator color="blue" size="sm" pulse={true} />
           <span className="font-mono text-xs uppercase font-bold tracking-widest text-[#4a5568]">
             DIRECT INQUIRY TERMINAL // CRS GROUP & HITZEMEISTER
           </span>
@@ -120,7 +137,7 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column: Form (7 Cols) */}
         <div className="lg:col-span-7">
-          <BoltedCard elevated={true} withScrews={true} withVents={true} tag="CENTRAL DISPATCH CONSOLE">
+          <BoltedCard elevated={true} withScrews={true} withVents={true} tag="CENTRAL INQUIRY STATION">
             {submittedRfqCode ? (
               <div className="p-6 text-center space-y-5 animate-in fade-in zoom-in-95 duration-200">
                 <div className="w-16 h-16 rounded-full bg-emerald-100 border border-emerald-400 text-emerald-600 flex items-center justify-center mx-auto shadow-[0_0_15px_rgba(16,185,129,0.4)]">
@@ -128,7 +145,7 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
                 </div>
 
                 <div>
-                  <span className="font-mono text-xs uppercase font-bold text-[#ff4757]">
+                  <span className="font-mono text-xs uppercase font-bold text-[#0ea5e9]">
                     INQUIRY RECORDED & ROUTED TO DIRECTORS' DESK
                   </span>
                   <h3 className="text-2xl font-black text-[#2d3436] mt-1">
@@ -141,8 +158,16 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
 
                 <div className="p-4 rounded-xl bg-[#e0e5ec] shadow-[inset_1px_1px_3px_#ffffff,2px_2px_5px_#babecc] text-left text-xs font-mono space-y-1.5 text-[#4a5568]">
                   <div className="flex justify-between">
+                    <span>Contact Name:</span>
+                    <strong className="text-[#2d3436]">{personName}</strong>
+                  </div>
+                  <div className="flex justify-between">
                     <span>Company:</span>
                     <strong className="text-[#2d3436]">{plantName || 'Not specified'}</strong>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Contact Info:</span>
+                    <strong className="text-[#2d3436]">{email || phone}</strong>
                   </div>
                   <div className="flex justify-between">
                     <span>Product:</span>
@@ -150,10 +175,10 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
                   </div>
                   <div className="flex justify-between">
                     <span>Quantity:</span>
-                    <strong className="text-[#ff4757]">{tonnage.toLocaleString()} MT</strong>
+                    <strong className="text-[#0284c7]">{tonnage.toLocaleString()} MT</strong>
                   </div>
                   <div className="flex justify-between">
-                    <span>Target Email:</span>
+                    <span>Destination Inbox:</span>
                     <strong className="text-[#2d3436]">acc.crsenterprises@gmail.com</strong>
                   </div>
                 </div>
@@ -169,49 +194,45 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                 {errorMessage && (
-                  <div className="p-3 rounded-lg bg-red-100 border border-red-300 text-red-700 text-xs font-mono flex items-center gap-2">
-                    <AlertCircle className="w-4 h-4 shrink-0" />
-                    <span>{errorMessage}</span>
+                  <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs font-mono flex items-center gap-2.5 shadow-[inset_1px_1px_3px_rgba(0,0,0,0.05)]">
+                    <AlertCircle className="w-4 h-4 shrink-0 text-amber-600" />
+                    <span className="font-semibold">{errorMessage}</span>
                   </div>
                 )}
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <RecessedInput
-                    label="Steel Plant / Company Name"
-                    placeholder="e.g. Shyam Steel / Rashmi Metaliks"
-                    required
-                    value={plantName}
-                    onChange={(e) => setPlantName(e.target.value)}
-                    icon={<Building className="w-4 h-4" />}
+                    label="Contact Person Name *"
+                    placeholder="e.g. Rajesh Sharma"
+                    value={personName}
+                    onChange={(e) => setPersonName(e.target.value)}
                   />
 
                   <RecessedInput
-                    label="Contact Person Name"
-                    placeholder="e.g. Rajesh Sharma"
-                    required
-                    value={personName}
-                    onChange={(e) => setPersonName(e.target.value)}
+                    label="Steel Plant / Company Name"
+                    placeholder="e.g. Shyam Steel / Rashmi Metaliks"
+                    value={plantName}
+                    onChange={(e) => setPlantName(e.target.value)}
+                    icon={<Building className="w-4 h-4" />}
                   />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <RecessedInput
-                    label="Email Address"
+                    label="Email Address (Email or Phone required)"
                     type="email"
                     placeholder="procurement@steelplant.com"
-                    required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     icon={<Mail className="w-4 h-4" />}
                   />
 
                   <RecessedInput
-                    label="Phone / Mobile Number"
+                    label="Phone / Mobile Number (Phone or Email required)"
                     type="tel"
                     placeholder="+91 98765 43210"
-                    required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     icon={<Phone className="w-4 h-4" />}
@@ -248,7 +269,7 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
                 <div className="space-y-2 pt-1">
                   <div className="flex items-center justify-between text-xs font-mono font-bold uppercase text-[#4a5568]">
                     <span>Estimated Requirement Tonnage / Volume</span>
-                    <span className="text-[#ff4757] font-extrabold text-sm">
+                    <span className="text-[#0284c7] font-extrabold text-sm">
                       {tonnage.toLocaleString()} MT / SETS
                     </span>
                   </div>
@@ -261,7 +282,7 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
                       step={100}
                       value={tonnage}
                       onChange={(e) => setTonnage(Number(e.target.value))}
-                      className="w-full h-2 bg-[#babecc] rounded-lg appearance-none cursor-pointer accent-[#ff4757]"
+                      className="w-full h-2 bg-[#babecc] rounded-lg appearance-none cursor-pointer accent-[#0ea5e9]"
                     />
                   </div>
                   <div className="flex justify-between text-[10px] font-mono text-[#4a5568]">
@@ -271,17 +292,18 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
                   </div>
                 </div>
 
-                {/* Specifications or Custom Requirements */}
+                {/* Notes / Specific Requirements - Mandatory */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-mono font-bold tracking-wider uppercase text-[#4a5568]">
-                    Specific Requirements / Tundish Mould Drawings / Notes
-                  </label>
+                  <div className="flex items-center justify-between text-xs font-mono font-bold tracking-wider uppercase text-[#4a5568]">
+                    <label>Specific Requirements / Notes *</label>
+                    <span className="text-[10px] text-[#0284c7] font-bold">MANDATORY</span>
+                  </div>
                   <textarea
                     rows={3}
-                    placeholder="Enter any specific dimensional tolerances, tundish board specs, grain fractions for ramming mass, or scrap grade details..."
+                    placeholder="Enter your required specifications, tundish mould drawings, grain fractions for ramming mass, scrap grade details, or preferred schedule..."
                     value={customSpecs}
                     onChange={(e) => setCustomSpecs(e.target.value)}
-                    className="w-full bg-[#e0e5ec] text-[#2d3436] placeholder-[#4a5568]/60 font-mono text-xs rounded-lg p-3.5 shadow-[inset_4px_4px_8px_#babecc,inset_-4px_-4px_8px_#ffffff] border-none outline-none focus:shadow-[inset_4px_4px_8px_#babecc,inset_-4px_-4px_8px_#ffffff,0_0_0_2px_#ff4757]"
+                    className="w-full bg-[#e0e5ec] text-[#2d3436] placeholder-[#4a5568]/60 font-mono text-xs rounded-lg p-3.5 shadow-[inset_4px_4px_8px_#babecc,inset_-4px_-4px_8px_#ffffff] border-none outline-none focus:shadow-[inset_4px_4px_8px_#babecc,inset_-4px_-4px_8px_#ffffff,0_0_0_2px_#0ea5e9]"
                   />
                 </div>
 
@@ -304,14 +326,13 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
           </BoltedCard>
         </div>
 
-        {/* Right Column: Exact Visiting Card Information from User's Document */}
+        {/* Right Column: Visiting Card Representation */}
         <div className="lg:col-span-5 space-y-6">
-          {/* Visiting Card Representation */}
           <div className="relative rounded-3xl bg-[#1a1f26] p-6 text-white border-2 border-[#39424e] shadow-[14px_14px_30px_#babecc,-12px_-12px_28px_#ffffff] bolted-panel-dark">
             <div className="flex items-center justify-between pb-4 border-b border-neutral-700 font-mono text-xs text-neutral-300">
               <div className="flex items-center gap-2">
-                <LedIndicator color="green" size="sm" pulse={true} />
-                <span className="font-bold text-[#ff4757]">CRS GROUP LEADERSHIP</span>
+                <LedIndicator color="blue" size="sm" pulse={true} />
+                <span className="font-bold text-[#38bdf8]">CRS GROUP LEADERSHIP</span>
               </div>
               <span className="text-[10px] text-neutral-400">DIRECT CONTACT</span>
             </div>
@@ -321,7 +342,7 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
                 <div className="text-2xl font-black font-sans tracking-tight text-white">
                   SUBHAM CHOWDHARY
                 </div>
-                <div className="text-sm font-bold text-[#ff4757] mt-0.5">
+                <div className="text-sm font-bold text-[#38bdf8] mt-0.5">
                   DIRECTOR • CRS GROUP
                 </div>
                 <div className="text-[11px] text-neutral-400 mt-0.5">
@@ -331,9 +352,9 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
 
               <div className="pt-3 border-t border-neutral-800 space-y-3 text-xs text-neutral-300">
                 <div className="flex items-center gap-3">
-                  <Phone className="w-4 h-4 text-[#ff4757] shrink-0" />
+                  <Phone className="w-4 h-4 text-[#38bdf8] shrink-0" />
                   <div>
-                    <a href="tel:+917863950905" className="hover:text-[#ff4757] font-bold">
+                    <a href="tel:+917863950905" className="hover:text-[#38bdf8] font-bold">
                       +91-786 3950905
                     </a>
                     <span className="text-neutral-500 text-[10px] ml-2">(India)</span>
@@ -341,9 +362,9 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <Phone className="w-4 h-4 text-[#ff4757] shrink-0" />
+                  <Phone className="w-4 h-4 text-[#38bdf8] shrink-0" />
                   <div>
-                    <a href="tel:+447824609436" className="hover:text-[#ff4757] font-bold">
+                    <a href="tel:+447824609436" className="hover:text-[#38bdf8] font-bold">
                       +44-782 4609436
                     </a>
                     <span className="text-neutral-500 text-[10px] ml-2">(United Kingdom)</span>
@@ -351,8 +372,8 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <Mail className="w-4 h-4 text-[#ff4757] shrink-0" />
-                  <a href="mailto:acc.crsenterprises@gmail.com" className="hover:text-[#ff4757] font-bold underline">
+                  <Mail className="w-4 h-4 text-[#38bdf8] shrink-0" />
+                  <a href="mailto:acc.crsenterprises@gmail.com" className="hover:text-[#38bdf8] font-bold underline">
                     acc.crsenterprises@gmail.com
                   </a>
                 </div>
@@ -360,7 +381,7 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
 
               <div className="pt-3 border-t border-neutral-800 space-y-2.5 text-xs text-neutral-300">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-[#ff4757] shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-[#38bdf8] shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-white">Manufacturing Plant & Office (Purulia):</strong>
                     <p className="text-[11px] text-neutral-400">
@@ -370,7 +391,7 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-[#ff4757] shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-[#38bdf8] shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-white">UK Corporate Office (London):</strong>
                     <p className="text-[11px] text-neutral-400">
@@ -386,7 +407,7 @@ export const ContactRFQSection: React.FC<ContactRFQSectionProps> = ({ selectedMa
           <div className="p-5 rounded-2xl bg-[#e0e5ec] border border-white/60 shadow-[8px_8px_18px_#babecc,-8px_-8px_18px_#ffffff] space-y-2 text-xs font-mono text-[#4a5568]">
             <div className="flex items-center justify-between pb-2 border-b border-[#babecc]/60">
               <span className="font-bold text-[#2d3436] uppercase">OUR PROMISE</span>
-              <ShieldCheck className="w-4 h-4 text-[#ff4757]" />
+              <ShieldCheck className="w-4 h-4 text-[#0284c7]" />
             </div>
             <div className="space-y-1">
               <div className="font-bold text-[#2d3436]">● RELIABILITY IN MATERIALS</div>

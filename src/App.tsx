@@ -21,7 +21,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans selection:bg-[#ff4757] selection:text-white">
+    <div className="min-h-screen flex flex-col font-sans selection:bg-[#0284c7] selection:text-white">
       {/* Top Console Navbar */}
       <Navbar activeSection={activeSection} onNavigate={scrollToSection} />
 

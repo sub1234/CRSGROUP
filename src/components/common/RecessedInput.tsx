@@ -41,7 +41,7 @@ export const RecessedInput: React.FC<RecessedInputProps> = ({
           id={inputId}
           className={`w-full min-h-[52px] bg-[#e0e5ec] text-[#2d3436] placeholder-[#4a5568]/60 font-mono text-sm rounded-lg px-4 ${
             icon ? 'pl-11' : ''
-          } shadow-[inset_4px_4px_8px_#babecc,inset_-4px_-4px_8px_#ffffff] border-none outline-none transition-all duration-150 focus:shadow-[inset_4px_4px_8px_#babecc,inset_-4px_-4px_8px_#ffffff,0_0_0_2px_#ff4757] disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
+          } shadow-[inset_4px_4px_8px_#babecc,inset_-4px_-4px_8px_#ffffff] border-none outline-none transition-all duration-150 focus:shadow-[inset_4px_4px_8px_#babecc,inset_-4px_-4px_8px_#ffffff,0_0_0_2px_#0ea5e9] disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
           {...props}
         />
       </div>
@@ -87,7 +87,7 @@ export const RecessedSelect: React.FC<RecessedSelectProps> = ({
       <div className="relative">
         <select
           id={selectId}
-          className={`w-full min-h-[52px] appearance-none bg-[#e0e5ec] text-[#2d3436] font-mono text-sm rounded-lg px-4 shadow-[inset_4px_4px_8px_#babecc,inset_-4px_-4px_8px_#ffffff] border-none outline-none transition-all duration-150 focus:shadow-[inset_4px_4px_8px_#babecc,inset_-4px_-4px_8px_#ffffff,0_0_0_2px_#ff4757] cursor-pointer ${className}`}
+          className={`w-full min-h-[52px] appearance-none bg-[#e0e5ec] text-[#2d3436] font-mono text-sm rounded-lg px-4 shadow-[inset_4px_4px_8px_#babecc,inset_-4px_-4px_8px_#ffffff] border-none outline-none transition-all duration-150 focus:shadow-[inset_4px_4px_8px_#babecc,inset_-4px_-4px_8px_#ffffff,0_0_0_2px_#0ea5e9] cursor-pointer ${className}`}
           {...props}
         >
           {options.map((opt) => (

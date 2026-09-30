@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { LedIndicator } from './common/LedIndicator';
+import React from 'react';
 import { VentSlots } from './common/VentSlots';
 import { ArrowUp, Phone, Mail } from 'lucide-react';
 
@@ -8,39 +7,12 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = () => {
-  const [utcTime, setUtcTime] = useState('');
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      setUtcTime(now.toUTCString().replace('GMT', 'UTC'));
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <footer className="mt-16 bg-[#232931] text-[#e0e5ec] border-t-4 border-[#39424e] relative bolted-panel-dark">
-      {/* Industrial Safety Ribbon */}
-      <div className="bg-[#1a1f26] border-b border-white/5 py-2.5 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-[10px] font-mono text-neutral-400">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#ff4757] animate-ping" />
-            <span className="text-[#ff4757] font-bold">CRS GROUP PROMISE:</span>
-            <span>RELIABILITY IN MATERIALS • CONSISTENCY IN PRODUCTS • RESPONSIBILITY IN SERVICE</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span>SYS_TIME: {utcTime || 'SYNCHRONIZING...'}</span>
-            <LedIndicator color="green" size="sm" pulse={true} label="PURULIA HUB ONLINE" />
-          </div>
-        </div>
-      </div>
-
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12 border-b border-white/10">
           {/* Brand Column */}
@@ -69,13 +41,13 @@ export const Footer: React.FC<FooterProps> = () => {
 
             <div className="space-y-1.5 text-xs font-mono text-neutral-300 pt-1">
               <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#ff4757]" />
+                <Phone className="w-3.5 h-3.5 text-[#38bdf8]" />
                 <a href="tel:+917863950905" className="hover:text-white">+91-786 3950905 (India)</a>
                 <span className="text-neutral-500">•</span>
                 <a href="tel:+447824609436" className="hover:text-white">+44-782 4609436 (UK)</a>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#ff4757]" />
+                <Mail className="w-3.5 h-3.5 text-[#38bdf8]" />
                 <a href="mailto:acc.crsenterprises@gmail.com" className="hover:text-white underline">
                   acc.crsenterprises@gmail.com
                 </a>
@@ -150,7 +122,7 @@ export const Footer: React.FC<FooterProps> = () => {
 
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#1a1f26] border border-white/10 text-neutral-300 hover:text-[#ff4757] shadow-[2px_2px_4px_black] active:translate-y-[1px] transition-all cursor-pointer"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#1a1f26] border border-white/10 text-neutral-300 hover:text-[#38bdf8] shadow-[2px_2px_4px_black] active:translate-y-[1px] transition-all cursor-pointer"
           >
             <span>RETURN TO APEX</span>
             <ArrowUp className="w-3.5 h-3.5" />

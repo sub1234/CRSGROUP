@@ -18,9 +18,9 @@ export const ProductsSection: React.FC<ProductsSectionProps> = () => {
 
   const getDivisionIcon = (division: string) => {
     if (division === 'hitzemeister') {
-      return <Factory className="w-5 h-5 text-[#ff4757]" />;
+      return <Factory className="w-5 h-5 text-[#0284c7]" />;
     }
-    return <Building className="w-5 h-5 text-[#ff4757]" />;
+    return <Building className="w-5 h-5 text-[#0284c7]" />;
   };
 
   return (
@@ -58,7 +58,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = () => {
           onClick={() => setSelectedDivision('all')}
           className={`px-5 py-2.5 rounded-xl font-mono text-xs font-bold uppercase tracking-wider transition-all duration-150 cursor-pointer ${
             selectedDivision === 'all'
-              ? 'bg-[#e0e5ec] text-[#ff4757] shadow-[4px_4px_10px_#babecc,-4px_-4px_10px_#ffffff]'
+              ? 'bg-[#e0e5ec] text-[#0284c7] shadow-[4px_4px_10px_#babecc,-4px_-4px_10px_#ffffff]'
               : 'text-[#4a5568] hover:text-[#2d3436] hover:bg-[#e0e5ec]/60'
           }`}
         >
@@ -69,7 +69,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = () => {
           onClick={() => setSelectedDivision('hitzemeister')}
           className={`px-5 py-2.5 rounded-xl font-mono text-xs font-bold uppercase tracking-wider transition-all duration-150 cursor-pointer flex items-center gap-2 ${
             selectedDivision === 'hitzemeister'
-              ? 'bg-[#e0e5ec] text-[#ff4757] shadow-[4px_4px_10px_#babecc,-4px_-4px_10px_#ffffff]'
+              ? 'bg-[#e0e5ec] text-[#0284c7] shadow-[4px_4px_10px_#babecc,-4px_-4px_10px_#ffffff]'
               : 'text-[#4a5568] hover:text-[#2d3436] hover:bg-[#e0e5ec]/60'
           }`}
         >
@@ -81,7 +81,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = () => {
           onClick={() => setSelectedDivision('crs-enterprises')}
           className={`px-5 py-2.5 rounded-xl font-mono text-xs font-bold uppercase tracking-wider transition-all duration-150 cursor-pointer flex items-center gap-2 ${
             selectedDivision === 'crs-enterprises'
-              ? 'bg-[#e0e5ec] text-[#ff4757] shadow-[4px_4px_10px_#babecc,-4px_-4px_10px_#ffffff]'
+              ? 'bg-[#e0e5ec] text-[#0284c7] shadow-[4px_4px_10px_#babecc,-4px_-4px_10px_#ffffff]'
               : 'text-[#4a5568] hover:text-[#2d3436] hover:bg-[#e0e5ec]/60'
           }`}
         >
@@ -109,7 +109,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = () => {
                     {getDivisionIcon(mat.division)}
                   </div>
                   <div>
-                    <span className="font-mono text-xs font-bold text-[#ff4757] tracking-wider">
+                    <span className="font-mono text-xs font-bold text-[#0284c7] tracking-wider">
                       {mat.code} // {mat.categoryLabel}
                     </span>
                     <h3 className="font-sans font-extrabold text-xl text-[#2d3436] tracking-tight leading-tight">
@@ -138,7 +138,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = () => {
               <div className="p-3.5 rounded-xl bg-[#d1d9e6]/45 shadow-[inset_2px_2px_5px_#babecc,inset_-1px_-1px_3px_#ffffff] border border-white/30">
                 <div className="flex items-center justify-between text-[10px] font-mono font-bold text-[#4a5568] uppercase pb-2 border-b border-[#babecc]/40 mb-2">
                   <span>KEY SPECIFICATIONS & METALLURGICAL ASSAY</span>
-                  <span className="text-[#ff4757]">BATCH VERIFIED</span>
+                  <span className="text-[#0284c7]">BATCH VERIFIED</span>
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-xs font-mono">
                   {mat.primaryChemistry.map((c, i) => (
@@ -155,7 +155,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = () => {
                 <div className="space-y-1 text-xs text-[#4a5568] font-mono">
                   {mat.highlightPoints.map((pt, i) => (
                     <div key={i} className="flex items-center gap-1.5 text-[11px]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#ff4757]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7]" />
                       <span>{pt}</span>
                     </div>
                   ))}
@@ -180,7 +180,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = () => {
               <span className="text-[11px] text-[#2d3436] font-semibold">
                 STANDARD & CUSTOM PLANT SPECIFICATIONS
               </span>
-              <span className="text-[10px] font-bold text-[#ff4757] uppercase tracking-wider">
+              <span className="text-[10px] font-bold text-[#0284c7] uppercase tracking-wider">
                 CERTIFIED INDUSTRIAL GRADE
               </span>
             </div>

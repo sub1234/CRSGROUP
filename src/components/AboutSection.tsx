@@ -33,12 +33,12 @@ export const AboutSection: React.FC = () => {
               onClick={() => setActiveTab('about')}
               className={`w-full text-left p-4 rounded-xl font-mono text-xs uppercase font-bold tracking-wider transition-all duration-200 cursor-pointer flex items-center justify-between ${
                 activeTab === 'about'
-                  ? 'bg-[#e0e5ec] text-[#2d3436] shadow-[6px_6px_12px_#babecc,-6px_-6px_12px_#ffffff] border-l-4 border-[#ff4757]'
+                  ? 'bg-[#e0e5ec] text-[#2d3436] shadow-[6px_6px_12px_#babecc,-6px_-6px_12px_#ffffff] border-l-4 border-[#0284c7]'
                   : 'text-[#4a5568] hover:bg-[#e0e5ec]/60'
               }`}
             >
               <div className="flex items-center gap-3">
-                <Compass className="w-4 h-4 text-[#ff4757]" />
+                <Compass className="w-4 h-4 text-[#0284c7]" />
                 <span>01. About Us</span>
               </div>
               <span className="text-[10px] text-[#4a5568]">DOC-01</span>
@@ -48,12 +48,12 @@ export const AboutSection: React.FC = () => {
               onClick={() => setActiveTab('tundish')}
               className={`w-full text-left p-4 rounded-xl font-mono text-xs uppercase font-bold tracking-wider transition-all duration-200 cursor-pointer flex items-center justify-between ${
                 activeTab === 'tundish'
-                  ? 'bg-[#e0e5ec] text-[#2d3436] shadow-[6px_6px_12px_#babecc,-6px_-6px_12px_#ffffff] border-l-4 border-[#ff4757]'
+                  ? 'bg-[#e0e5ec] text-[#2d3436] shadow-[6px_6px_12px_#babecc,-6px_-6px_12px_#ffffff] border-l-4 border-[#0284c7]'
                   : 'text-[#4a5568] hover:bg-[#e0e5ec]/60'
               }`}
             >
               <div className="flex items-center gap-3">
-                <Flame className="w-4 h-4 text-[#ff4757]" />
+                <Flame className="w-4 h-4 text-[#0284c7]" />
                 <span>03. Tundish Boards</span>
               </div>
               <span className="text-[10px] text-[#4a5568]">DOC-03</span>
@@ -63,12 +63,12 @@ export const AboutSection: React.FC = () => {
               onClick={() => setActiveTab('why-us')}
               className={`w-full text-left p-4 rounded-xl font-mono text-xs uppercase font-bold tracking-wider transition-all duration-200 cursor-pointer flex items-center justify-between ${
                 activeTab === 'why-us'
-                  ? 'bg-[#e0e5ec] text-[#2d3436] shadow-[6px_6px_12px_#babecc,-6px_-6px_12px_#ffffff] border-l-4 border-[#ff4757]'
+                  ? 'bg-[#e0e5ec] text-[#2d3436] shadow-[6px_6px_12px_#babecc,-6px_-6px_12px_#ffffff] border-l-4 border-[#0284c7]'
                   : 'text-[#4a5568] hover:bg-[#e0e5ec]/60'
               }`}
             >
               <div className="flex items-center gap-3">
-                <Award className="w-4 h-4 text-[#ff4757]" />
+                <Award className="w-4 h-4 text-[#0284c7]" />
                 <span>04. Why Us?</span>
               </div>
               <span className="text-[10px] text-[#4a5568]">DOC-04</span>
@@ -78,12 +78,12 @@ export const AboutSection: React.FC = () => {
               onClick={() => setActiveTab('director')}
               className={`w-full text-left p-4 rounded-xl font-mono text-xs uppercase font-bold tracking-wider transition-all duration-200 cursor-pointer flex items-center justify-between ${
                 activeTab === 'director'
-                  ? 'bg-[#e0e5ec] text-[#2d3436] shadow-[6px_6px_12px_#babecc,-6px_-6px_12px_#ffffff] border-l-4 border-[#ff4757]'
+                  ? 'bg-[#e0e5ec] text-[#2d3436] shadow-[6px_6px_12px_#babecc,-6px_-6px_12px_#ffffff] border-l-4 border-[#0284c7]'
                   : 'text-[#4a5568] hover:bg-[#e0e5ec]/60'
               }`}
             >
               <div className="flex items-center gap-3">
-                <Quote className="w-4 h-4 text-[#ff4757]" />
+                <Quote className="w-4 h-4 text-[#0284c7]" />
                 <span>06. Director's Desk</span>
               </div>
               <span className="text-[10px] text-[#4a5568]">DOC-06</span>
@@ -118,13 +118,13 @@ export const AboutSection: React.FC = () => {
               <div className="space-y-5">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl bg-[#e0e5ec] shadow-[inset_2px_2px_4px_#ffffff,inset_-2px_-2px_4px_#babecc,4px_4px_8px_#babecc] flex items-center justify-center">
-                    <Factory className="w-6 h-6 text-[#ff4757]" />
+                    <Factory className="w-6 h-6 text-[#0284c7]" />
                   </div>
                   <div>
                     <h3 className="font-sans font-bold text-2xl text-[#2d3436] tracking-tight">
                       Built for Industry
                     </h3>
-                    <p className="font-mono text-xs text-[#ff4757] font-bold">
+                    <p className="font-mono text-xs text-[#0284c7] font-bold">
                       MINERAL SUPPLY • INDUSTRIAL MATERIALS • REFRACTORY SOLUTIONS
                     </p>
                   </div>
@@ -138,7 +138,7 @@ export const AboutSection: React.FC = () => {
                   The Group combines the commercial and supply-chain capabilities of <strong>CRS Enterprises Private Limited</strong> with the specialised manufacturing capabilities of <strong>Hitzemeister Private Limited</strong>.
                 </p>
 
-                <div className="p-4 rounded-xl bg-[#d1d9e6]/50 shadow-[inset_2px_2px_4px_#babecc] border-l-4 border-[#ff4757] space-y-1">
+                <div className="p-4 rounded-xl bg-[#d1d9e6]/50 shadow-[inset_2px_2px_4px_#babecc] border-l-4 border-[#0284c7] space-y-1">
                   <div className="font-mono text-xs font-bold text-[#2d3436]">
                     OUR CORE OBJECTIVE:
                   </div>
@@ -177,13 +177,13 @@ export const AboutSection: React.FC = () => {
               <div className="space-y-5">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl bg-[#e0e5ec] shadow-[inset_2px_2px_4px_#ffffff,inset_-2px_-2px_4px_#babecc,4px_4px_8px_#babecc] flex items-center justify-center">
-                    <Flame className="w-6 h-6 text-[#ff4757]" />
+                    <Flame className="w-6 h-6 text-[#0284c7]" />
                   </div>
                   <div>
                     <h3 className="font-sans font-bold text-2xl text-[#2d3436] tracking-tight">
                       Tundish Boards
                     </h3>
-                    <p className="font-mono text-xs text-[#ff4757] font-bold">
+                    <p className="font-mono text-xs text-[#0284c7] font-bold">
                       REFRACTORY SOLUTIONS FOR CONTINUOUS CASTING
                     </p>
                   </div>
@@ -191,7 +191,7 @@ export const AboutSection: React.FC = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="p-4 rounded-xl bg-[#d1d9e6]/50 shadow-[inset_2px_2px_4px_#babecc] space-y-1">
-                    <div className="font-mono text-xs font-bold text-[#ff4757] uppercase">
+                    <div className="font-mono text-xs font-bold text-[#0284c7] uppercase">
                       HIGH TEMPERATURE RESISTANCE
                     </div>
                     <p className="text-xs text-[#4a5568] leading-relaxed">
@@ -200,7 +200,7 @@ export const AboutSection: React.FC = () => {
                   </div>
 
                   <div className="p-4 rounded-xl bg-[#d1d9e6]/50 shadow-[inset_2px_2px_4px_#babecc] space-y-1">
-                    <div className="font-mono text-xs font-bold text-[#ff4757] uppercase">
+                    <div className="font-mono text-xs font-bold text-[#0284c7] uppercase">
                       CONSISTENT QUALITY
                     </div>
                     <p className="text-xs text-[#4a5568] leading-relaxed">
@@ -209,7 +209,7 @@ export const AboutSection: React.FC = () => {
                   </div>
 
                   <div className="p-4 rounded-xl bg-[#d1d9e6]/50 shadow-[inset_2px_2px_4px_#babecc] space-y-1">
-                    <div className="font-mono text-xs font-bold text-[#ff4757] uppercase">
+                    <div className="font-mono text-xs font-bold text-[#0284c7] uppercase">
                       DIMENSIONAL ACCURACY
                     </div>
                     <p className="text-xs text-[#4a5568] leading-relaxed">
@@ -218,7 +218,7 @@ export const AboutSection: React.FC = () => {
                   </div>
 
                   <div className="p-4 rounded-xl bg-[#d1d9e6]/50 shadow-[inset_2px_2px_4px_#babecc] space-y-1">
-                    <div className="font-mono text-xs font-bold text-[#ff4757] uppercase">
+                    <div className="font-mono text-xs font-bold text-[#0284c7] uppercase">
                       APPLICATION FOCUSED
                     </div>
                     <p className="text-xs text-[#4a5568] leading-relaxed">
@@ -244,13 +244,13 @@ export const AboutSection: React.FC = () => {
               <div className="space-y-5">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl bg-[#e0e5ec] shadow-[inset_2px_2px_4px_#ffffff,inset_-2px_-2px_4px_#babecc,4px_4px_8px_#babecc] flex items-center justify-center">
-                    <Award className="w-6 h-6 text-[#ff4757]" />
+                    <Award className="w-6 h-6 text-[#0284c7]" />
                   </div>
                   <div>
                     <h3 className="font-sans font-bold text-2xl text-[#2d3436] tracking-tight">
                       Why Choose CRS Group?
                     </h3>
-                    <p className="font-mono text-xs text-[#ff4757] font-bold">
+                    <p className="font-mono text-xs text-[#0284c7] font-bold">
                       A COMPREHENSIVE INDUSTRIAL PLATFORM
                     </p>
                   </div>
@@ -259,7 +259,7 @@ export const AboutSection: React.FC = () => {
                 <div className="space-y-3">
                   <div className="p-3.5 rounded-xl bg-[#d1d9e6]/40 shadow-[inset_1px_1px_3px_#babecc]">
                     <span className="font-mono text-xs font-bold text-[#2d3436] uppercase flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#ff4757]" /> Integrated Approach
+                      <CheckCircle2 className="w-4 h-4 text-[#0284c7]" /> Integrated Approach
                     </span>
                     <p className="text-xs text-[#4a5568] mt-1 pl-6">
                       Our businesses operate across different stages of the industrial supply chain, from manufacturing to trading.
@@ -268,7 +268,7 @@ export const AboutSection: React.FC = () => {
 
                   <div className="p-3.5 rounded-xl bg-[#d1d9e6]/40 shadow-[inset_1px_1px_3px_#babecc]">
                     <span className="font-mono text-xs font-bold text-[#2d3436] uppercase flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#ff4757]" /> Industry Understanding
+                      <CheckCircle2 className="w-4 h-4 text-[#0284c7]" /> Industry Understanding
                     </span>
                     <p className="text-xs text-[#4a5568] mt-1 pl-6">
                       Our team combines decades of steel-industry experience with our Directors’ extensive international exposure, creating strong expertise to understand industrial requirements and deliver reliable, practical solutions.
@@ -277,7 +277,7 @@ export const AboutSection: React.FC = () => {
 
                   <div className="p-3.5 rounded-xl bg-[#d1d9e6]/40 shadow-[inset_1px_1px_3px_#babecc]">
                     <span className="font-mono text-xs font-bold text-[#2d3436] uppercase flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#ff4757]" /> Supply & Manufacturing Capability
+                      <CheckCircle2 className="w-4 h-4 text-[#0284c7]" /> Supply & Manufacturing Capability
                     </span>
                     <p className="text-xs text-[#4a5568] mt-1 pl-6">
                       We focus on dependable sourcing, procurement and logistics coordination, while Hitzemeister adds specialized refractory manufacturing capability to the Group.
@@ -286,7 +286,7 @@ export const AboutSection: React.FC = () => {
 
                   <div className="p-3.5 rounded-xl bg-[#d1d9e6]/40 shadow-[inset_1px_1px_3px_#babecc]">
                     <span className="font-mono text-xs font-bold text-[#2d3436] uppercase flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#ff4757]" /> Flexibility
+                      <CheckCircle2 className="w-4 h-4 text-[#0284c7]" /> Flexibility
                     </span>
                     <p className="text-xs text-[#4a5568] mt-1 pl-6">
                       Our businesses can respond swiftly to both standard and customized industrial requirements, serving customers across different stages of their material and production needs.
@@ -302,13 +302,13 @@ export const AboutSection: React.FC = () => {
                 <div className="flex items-center justify-between pb-3 border-b border-[#babecc]/50">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-xl bg-[#e0e5ec] shadow-[inset_2px_2px_4px_#ffffff,inset_-2px_-2px_4px_#babecc,4px_4px_8px_#babecc] flex items-center justify-center">
-                      <Quote className="w-6 h-6 text-[#ff4757]" />
+                      <Quote className="w-6 h-6 text-[#0284c7]" />
                     </div>
                     <div>
                       <h3 className="font-sans font-bold text-2xl text-[#2d3436] tracking-tight">
                         From the Director's Desk
                       </h3>
-                      <p className="font-mono text-xs text-[#ff4757] font-bold">
+                      <p className="font-mono text-xs text-[#0284c7] font-bold">
                         BUILDING INDUSTRY. CREATING TRUST. DELIVERING VALUE.
                       </p>
                     </div>
@@ -347,7 +347,7 @@ export const AboutSection: React.FC = () => {
                     <div className="font-black text-base text-[#2d3436]">
                       SUBHAM CHOWDHARY
                     </div>
-                    <div className="text-xs text-[#ff4757] font-bold">
+                    <div className="text-xs text-[#0284c7] font-bold">
                       Director • CRS Group
                     </div>
                     <div className="text-[11px] text-[#4a5568]">
