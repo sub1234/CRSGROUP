@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { LedIndicator } from './common/LedIndicator';
 import { TactileButton } from './common/TactileButton';
-import { Menu, X, Flame, ShieldCheck, FileSpreadsheet } from 'lucide-react';
+import { Menu, X, Flame, Mail } from 'lucide-react';
 
 interface NavbarProps {
   activeSection: string;
@@ -13,10 +13,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
 
   const navItems = [
     { id: 'hero', label: 'Overview' },
-    { id: 'about', label: 'Company' },
-    { id: 'products', label: 'Materials & Specs' },
-    { id: 'production', label: 'Metallurgy' },
-    { id: 'rfq', label: 'RFQ Console' },
+    { id: 'companies', label: 'Group' },
+    { id: 'about', label: 'About Us' },
+    { id: 'products', label: 'Products & Minerals' },
+    { id: 'clients', label: 'Clients' },
+    { id: 'rfq', label: 'Contact Us' },
   ];
 
   const handleNavClick = (id: string) => {
@@ -43,18 +44,18 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
           <div>
             <div className="flex items-center gap-2">
               <span className="font-sans font-black text-lg md:text-xl tracking-tighter text-[#2d3436] drop-shadow-[0_1px_0_#ffffff]">
-                HEITZMEISTER
+                CRS GROUP
               </span>
-              <span className="hidden sm:inline-block text-[10px] font-mono font-bold bg-[#d1d9e6] px-1.5 py-0.5 rounded text-[#4a5568] shadow-[inset_1px_1px_2px_#babecc]">
-                v4.8
+              <span className="hidden sm:inline-block text-[10px] font-mono font-bold bg-[#ff4757] text-white px-2 py-0.5 rounded shadow-[inset_1px_1px_2px_rgba(0,0,0,0.2)]">
+                HITZEMEISTER
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-[9px] font-mono tracking-widest text-[#4a5568] uppercase font-semibold">
-                Steel Plant Raw Materials
+              <span className="text-[9px] font-mono tracking-widest text-[#4a5568] uppercase font-bold">
+                CRS Enterprises • Hitzemeister Pvt Ltd
               </span>
               <span className="w-1 h-1 rounded-full bg-[#babecc]" />
-              <LedIndicator color="green" size="sm" pulse={true} label="SYS OK" className="hidden lg:inline-flex" />
+              <LedIndicator color="green" size="sm" pulse={true} label="PURULIA WORKS" className="hidden lg:inline-flex" />
             </div>
           </div>
         </div>
@@ -67,7 +68,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all duration-150 cursor-pointer ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all duration-150 cursor-pointer ${
                   isActive
                     ? 'bg-[#e0e5ec] text-[#ff4757] shadow-[4px_4px_8px_#babecc,-4px_-4px_8px_#ffffff]'
                     : 'text-[#4a5568] hover:text-[#2d3436] hover:bg-[#e0e5ec]/60'
@@ -79,31 +80,22 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
           })}
         </nav>
 
-        {/* Action Controls */}
+        {/* Quick Contact CTA */}
         <div className="hidden lg:flex items-center gap-3">
-          <TactileButton
-            variant="secondary"
-            size="sm"
-            icon={<FileSpreadsheet className="w-3.5 h-3.5" />}
-            onClick={() => handleNavClick('products')}
-          >
-            Specs
-          </TactileButton>
-
           <TactileButton
             variant="primary"
             size="sm"
-            icon={<ShieldCheck className="w-3.5 h-3.5" />}
+            icon={<Mail className="w-3.5 h-3.5" />}
             onClick={() => handleNavClick('rfq')}
           >
-            Dispatch RFQ
+            Contact & Inquiry
           </TactileButton>
         </div>
 
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden w-11 h-11 rounded-xl bg-[#e0e5ec] shadow-[4px_4px_8px_#babecc,-4px_-4px_8px_#ffffff] flex items-center justify-center text-[#2d3436] active:shadow-[inset_2px_2px_4px_#babecc,inset_-2px_-2px_4px_#ffffff] transition-all"
+          className="md:hidden w-11 h-11 rounded-xl bg-[#e0e5ec] shadow-[4px_4px_8px_#babecc,-4px_-4px_8px_#ffffff] flex items-center justify-center text-[#2d3436] active:shadow-[inset_2px_2px_4px_#babecc,inset_-2px_-2px_4px_#ffffff] transition-all cursor-pointer"
           aria-label="Toggle navigation menu"
         >
           {mobileMenuOpen ? <X className="w-5 h-5 text-[#ff4757]" /> : <Menu className="w-5 h-5" />}
@@ -114,8 +106,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
       {mobileMenuOpen && (
         <div className="md:hidden mt-3 pt-3 border-t border-[#babecc]/60 space-y-2 pb-2 animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="flex items-center justify-between px-2 pb-2">
-            <LedIndicator color="green" size="sm" label="HEARTH CONTROL ACTIVE" />
-            <span className="text-[10px] font-mono text-[#4a5568]">PORT LATENCY: 14MS</span>
+            <LedIndicator color="green" size="sm" label="PURULIA & LONDON CONNECTED" />
+            <span className="text-[10px] font-mono text-[#4a5568]">+91-7863950905</span>
           </div>
 
           <div className="grid grid-cols-1 gap-2">
@@ -137,7 +129,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
               isFullWidth
               onClick={() => handleNavClick('rfq')}
             >
-              Dispatch RFQ Spec
+              Submit Procurement Inquiry
             </TactileButton>
           </div>
         </div>
